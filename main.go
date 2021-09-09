@@ -10,5 +10,5 @@ func main() {
 	r := gin.Default()
 	kernel.Load()
 	routes.Load(r)
-	r.Run()
+	r.Run("0.0.0.0:8888")
 }

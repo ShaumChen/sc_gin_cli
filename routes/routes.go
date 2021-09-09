@@ -8,6 +8,11 @@ import (
 )
 
 func config(router group) {
+	router.Registered(GET, "/", controller.Index)
+	router.Registered(GET, "/testSetSession", controller.TestSetSession)
+	router.Registered(GET, "/testGetSession", controller.TestGetSession)
+	router.Registered(GET, "/testRemoveSession", controller.TestRemoveSession)
+	router.Registered(GET, "/testCoroutineSetSession", controller.TestCoroutineSetSession)
 	router.Group("/api", func(api group) {
 		api.Group("/user", func(user group) {
 			user.Registered(GET, "/info", controller.Index, middleware.M3)
@@ -22,5 +27,4 @@ func Load(r *gin.Engine) {
 	router.Group("", func(g group) {
 		config(g)
 	}, kernel.Middleware...)
-	r.GET("/", convert(controller.Index))
 }
