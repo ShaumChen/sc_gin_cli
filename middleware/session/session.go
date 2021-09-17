@@ -18,7 +18,7 @@ func Session(c *context.Context) {
 		sessionString, err := redis.Client().Get(context2.TODO(), cookie).Result()
 		if err == nil {
 			var session context.Session
-			err := json.Unmarshal([]byte(sessionString), &session)
+			err = json.Unmarshal([]byte(sessionString), &session)
 			if err != nil {
 				return
 			}
@@ -33,6 +33,8 @@ func Session(c *context.Context) {
 		ExpireTime:  time.Now().Unix() + int64(lifeTime),
 		SessionList: make(map[string]interface{}),
 	}
+
+	c.Set("_session", session)
 	jsonString, _ := json.Marshal(session)
 	redis.Client().Set(context2.TODO(), sessionKey, jsonString, time.Second*time.Duration(lifeTime))
 }

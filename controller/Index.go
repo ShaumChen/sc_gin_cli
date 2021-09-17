@@ -1,9 +1,12 @@
 package controller
 
 import (
+	"golang.org/x/time/rate"
+	"scgin/component/limiter"
 	"scgin/context"
 	"scgin/response"
 	"strconv"
+	"time"
 )
 
 func Index(context *context.Context) *response.Response {
@@ -34,4 +37,12 @@ func TestCoroutineSetSession(context *context.Context) *response.Response {
 		}(i)
 	}
 	return response.Resp().String("coroutine set session")
+}
+
+func TestLimiter(context *context.Context) *response.Response {
+	l := limiter.NewLimiter(rate.Every(1*time.Second), 1, context.ClientIP())
+	if !l.Allow() {
+		return response.Resp().String("error")
+	}
+	return response.Resp().String("success")
 }
