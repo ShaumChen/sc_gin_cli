@@ -3,6 +3,7 @@ package controller
 import (
 	"golang.org/x/time/rate"
 	"scgin/component/limiter"
+	"scgin/component/lock"
 	"scgin/context"
 	"scgin/response"
 	"strconv"
@@ -45,4 +46,22 @@ func TestLimiter(context *context.Context) *response.Response {
 		return response.Resp().String("error")
 	}
 	return response.Resp().String("success")
+}
+
+func TestLock(context *context.Context) *response.Response {
+	l := lock.NewLock("test", 10*time.Second)
+	defer l.Release()
+	if l.Get() {
+		return response.Resp().String("拿锁成功")
+	}
+	return response.Resp().String("拿锁失败")
+}
+
+func TestBlock(context *context.Context) *response.Response {
+	l := lock.NewLock("test", 10*time.Second)
+	defer l.Release()
+	if l.Block(5 * time.Second) {
+		return response.Resp().String("拿锁成功")
+	}
+	return response.Resp().String("拿锁失败")
 }
