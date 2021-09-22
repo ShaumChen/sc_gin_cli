@@ -7,13 +7,13 @@ import (
 )
 
 type router struct {
-	engine *gin.Engine
+	engine      *gin.Engine
 	middlewares []context.HandlerFunc
 }
 
 type group struct {
-	engine *gin.Engine
-	path   string
+	engine      *gin.Engine
+	path        string
 	middlewares []context.HandlerFunc
 }
 
@@ -35,8 +35,8 @@ func newRouter(engine *gin.Engine) *router {
 
 func (r *router) Group(path string, callback func(group), middlewares ...context.HandlerFunc) {
 	callback(group{
-		engine: r.engine,
-		path:   path,
+		engine:      r.engine,
+		path:        path,
 		middlewares: middlewares,
 	})
 }
@@ -48,12 +48,12 @@ func (g group) Group(path string, callback func(group), middlewares ...context.H
 }
 
 func (g group) Registered(method method, url string, action func(*context.Context) *response.Response, middlewares ...context.HandlerFunc) {
-	var handlers = make([]gin.HandlerFunc, len(g.middlewares) + len(middlewares) + 1)
+	var handlers = make([]gin.HandlerFunc, len(g.middlewares)+len(middlewares)+1)
 	g.middlewares = append(g.middlewares, middlewares...)
-	for key,middleware := range g.middlewares {
+	for key, middleware := range g.middlewares {
 		temp := middleware
 		handlers[key] = func(c *gin.Context) {
-			temp(&context.Context{Context:c})
+			temp(&context.Context{Context: c})
 		}
 	}
 	handlers[len(g.middlewares)] = convert(action)
