@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"scgin/context"
-	"scgin/response"
+	"yogo/context"
+	"yogo/response"
 )
 
 type router struct {

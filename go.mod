@@ -1,4 +1,4 @@
-module scgin
+module yogo
 
 go 1.16
 

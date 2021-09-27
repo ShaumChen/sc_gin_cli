@@ -4,12 +4,12 @@ import (
 	context2 "context"
 	"encoding/json"
 	uuid "github.com/satori/go.uuid"
-	"scgin/context"
-	"scgin/redis"
 	"time"
+	"yogo/context"
+	"yogo/redis"
 )
 
-var cookieName = "scgin"
+var cookieName = "yogo"
 var lifeTime = 3600
 
 func Session(c *context.Context) {

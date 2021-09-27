@@ -2,9 +2,9 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"scgin/controller"
-	"scgin/kernel"
-	"scgin/middleware"
+	"yogo/controller"
+	"yogo/kernel"
+	"yogo/middleware"
 )
 
 func config(router group) {

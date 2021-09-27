@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"scgin/kernel"
-	"scgin/model"
-	"scgin/routes"
+	"yogo/kernel"
+	"yogo/model"
+	"yogo/routes"
 )
 
 func main() {

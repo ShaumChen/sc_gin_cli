@@ -2,14 +2,14 @@ package controller
 
 import (
 	"golang.org/x/time/rate"
-	"scgin/component/limiter"
-	"scgin/component/lock"
-	"scgin/context"
-	"scgin/kernel"
-	"scgin/model"
-	"scgin/response"
 	"strconv"
 	"time"
+	"yogo/component/limiter"
+	"yogo/component/lock"
+	"yogo/context"
+	"yogo/kernel"
+	"yogo/model"
+	"yogo/response"
 )
 
 func Index(context *context.Context) *response.Response {

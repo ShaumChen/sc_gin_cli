@@ -5,9 +5,9 @@ import (
 	"fmt"
 	goredis "github.com/go-redis/redis/v8"
 	uuid "github.com/satori/go.uuid"
-	"scgin/redis"
 	"sync"
 	"time"
+	"yogo/redis"
 )
 
 type lock struct {

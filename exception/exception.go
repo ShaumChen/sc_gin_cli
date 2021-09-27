@@ -3,7 +3,7 @@ package exception
 import (
 	"fmt"
 	"runtime/debug"
-	"scgin/context"
+	"yogo/context"
 )
 
 func Exception(c *context.Context) {

@@ -1,9 +1,9 @@
 package kernel
 
 import (
-	"scgin/context"
-	"scgin/exception"
-	"scgin/middleware/session"
+	"yogo/context"
+	"yogo/exception"
+	"yogo/middleware/session"
 )
 
 var Middleware []context.HandlerFunc
