@@ -1,0 +1,19 @@
+AppDebug: true
+
+HttpServer:
+  Title: imnull
+  Port: ":8080"
+  AllowCrossDomain: true
+
+
+Db:
+  driver: mysql
+  Mysql:
+    Host: 127.0.0.1
+    Port: 3306
+    Database: test
+    UserName: root
+    Password: 123456
+    Charset: utf8mb4
+    Collation: utf8mb4_unicode_ci
+    Prefix: ""

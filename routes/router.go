@@ -80,7 +80,7 @@ func convert(f func(*context.Context) *response.Response) gin.HandlerFunc {
 		switch item := data.(type) {
 		case string:
 			c.String(200, item)
-		case gin.H:
+		case interface{}:
 			c.JSON(200, item)
 		}
 	}

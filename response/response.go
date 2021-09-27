@@ -1,7 +1,5 @@
 package response
 
-import "github.com/gin-gonic/gin"
-
 type Response struct {
 	data interface{}
 }
@@ -10,12 +8,12 @@ func Resp() *Response {
 	return &Response{}
 }
 
-func (r *Response) Json(data gin.H) *Response {
-	r.data = data
+func (r *Response) Json(obj interface{}) *Response {
+	r.data = obj
 	return r
 }
 
-func (r *Response) String(data string) *Response  {
+func (r *Response) String(data string) *Response {
 	r.data = data
 	return r
 }

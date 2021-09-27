@@ -5,6 +5,8 @@ import (
 	"scgin/component/limiter"
 	"scgin/component/lock"
 	"scgin/context"
+	"scgin/kernel"
+	"scgin/model"
 	"scgin/response"
 	"strconv"
 	"time"
@@ -64,4 +66,17 @@ func TestBlock(context *context.Context) *response.Response {
 		return response.Resp().String("拿锁成功")
 	}
 	return response.Resp().String("拿锁失败")
+}
+
+func TestCreateUser(context *context.Context) *response.Response {
+	//user := &model.User{
+	//	UserName: "test",
+	//	Password: "123456",
+	//}
+	//_, err := (*sql.DB).Exec("insert into user (user_name, password) values (?, ?)","sdhjds","dsadas")
+	//if err != nil {
+	//	return nil
+	//}
+	row := kernel.Db.First(&model.User{}).Value
+	return response.Resp().Json(row)
 }
