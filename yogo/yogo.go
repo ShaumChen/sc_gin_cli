@@ -1,5 +1,7 @@
-package kernel
+package yogo
 
 import "github.com/jinzhu/gorm"
 
-var Db *gorm.DB
+var (
+	Db *gorm.DB
+)

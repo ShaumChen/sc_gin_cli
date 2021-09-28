@@ -7,9 +7,9 @@ import (
 	"yogo/component/limiter"
 	"yogo/component/lock"
 	"yogo/context"
-	"yogo/kernel"
 	"yogo/model"
 	"yogo/response"
+	"yogo/yogo"
 )
 
 func Index(context *context.Context) *response.Response {
@@ -73,10 +73,16 @@ func TestCreateUser(context *context.Context) *response.Response {
 	//	UserName: "test",
 	//	Password: "123456",
 	//}
-	//_, err := (*sql.DB).Exec("insert into user (user_name, password) values (?, ?)","sdhjds","dsadas")
+	yogo.Db.Exec("insert into user (user_name, password) values (?, ?)", "sdhjds", "dsadas")
 	//if err != nil {
 	//	return nil
 	//}
-	row := kernel.Db.First(&model.User{}).Value
+	//row := yogo.Db.First(&model.User{}).Value
+	return response.Resp().String("11111")
+}
+
+func TestGetUser(context *context.Context) *response.Response {
+	var user model.User
+	row := yogo.Db.Find(&user)
 	return response.Resp().Json(row)
 }

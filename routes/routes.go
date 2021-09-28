@@ -15,6 +15,7 @@ func config(router group) {
 	router.Registered(GET, "/testCoroutineSetSession", controller.TestCoroutineSetSession)
 	router.Registered(GET, "/testLimiter", controller.TestLimiter)
 	router.Registered(GET, "/testCreateUser", controller.TestCreateUser)
+	router.Registered(GET, "/testGetUser", controller.TestGetUser)
 	router.Group("/api", func(api group) {
 		api.Group("/user", func(user group) {
 			user.Registered(GET, "/info", controller.Index, middleware.M3)
